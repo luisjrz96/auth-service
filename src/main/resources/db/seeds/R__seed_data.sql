@@ -9,9 +9,9 @@ ON CONFLICT (name) DO NOTHING;
 -- Step 2: Ensure users are inserted
 INSERT INTO users (username, password, enabled)
 VALUES
-    ('admin', '{bcrypt}$2a$12$Q9IUGLB7hx6NsmzIc9tMxe8LbuwRpPZo7B8JXYD1Fp3g3v.mDTYte', true),
-    ('john_doe', '{bcrypt}$2a$12$71dwnhGhjKRj3p/EYQVgMeB0zDNXHChgfT0RLFd0ZGy2m9mfz1O1i', true),
-    ('jane_doe', '{bcrypt}$2a$12$UDTS0QjDl9dp.DDME1XECuB4dSOPiknP07RPS8ZZULFEovvG2RZsC', true)
+    ('admin', '{bcrypt}$2b$12$leHrDsTrxAdR0ezoU4vjGuaTVwZv7QLjcokC.TLBz1haGkPXoa.rm', true), -- admin123
+    ('john_doe', '{bcrypt}$2b$12$ZQp3WMrLvXNSY//C0Puqdu7NnA8me6o4nhc6wxAQ9THu9SjWXtuLO', true), -- user123
+    ('jane_doe', '{noop}mod123', true) -- mod123
 ON CONFLICT (username) DO NOTHING;
 
 -- Step 3: Assign roles to users

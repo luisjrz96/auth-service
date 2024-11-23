@@ -13,8 +13,3 @@ spring:
 
   flyway:
     locations: classpath:/db/migrations/,classpath:/db/seeds/
-  # define temporary user and password
-  security:
-    user:
-      name: foo
-      password: bar
