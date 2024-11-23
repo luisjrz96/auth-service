@@ -2,14 +2,17 @@ spring:
   application:
     name: auth-service
 
-  # temporary disable db
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
-      - org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration
+  # The information here is hardcoded, however, for real use case it should be using env variables
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${AUTH_APP_DB_URL:jdbc:postgresql://localhost:5432/auth_app}
+    username: ${AUTH_APP_DB_USERNAME:postgres}
+    password: ${AUTH_APP_DB_PASSWORD:admin}
+    pool-size: ${AUTH_APP_DB_POOL_SIZE:30}
 
+
+  flyway:
+    locations: classpath:/db/migrations/,classpath:/db/seeds/
   # define temporary user and password
   security:
     user:
